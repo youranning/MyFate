@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">有缘宁</string>
+
+
+    <string name="name">手机号/邮箱</string>
+    <string name="pwd">密码</string>
+    <string name="login">登录</string>
+    <string name="regist">注册</string>
+    <string name="userlogin">用户登录</string>
+    <string name="login_phone">手机号快速登录</string>
+    <string name="back">返回</string>
+    <string name="phon">请输入手机号码</string>
+    <string name="verification">请输入验证码</string>
+    <string name="next">下一步</string>
+    <string name="sendVerification">发送验证码</string>
+    <string name="nickname">昵称:</string>
+    <string name="sex">性别:</string>
+    <string name="age">年龄:</string>
+    <string name="city">所在城市:</string>
+    <string name="description">自我描述:</string>
+    <string name="pwd2">请重新输入密码</string>
+    <string name="pwd1">请输入密码</string>
+    <string name="description_hint">个人情况</string>
+    <string name="nickname_hint">请输入昵称</string>
+    <string name="camera">照相机</string>
+    <string name="pick">相册</string>
+    <string name="find">发现</string>
+    <string name="anim">动态</string>
+    <string name="msg">信箱</string>
+    <string name="my">我的</string>
+    <string name="cut">切换模式</string>
+    <string name="same">她与你的匹配度100%</string>
+    <string name="secrecy">保密</string>
+    <string name="constellation">星座:</string>
+    <string name="location">居住地</string>
+    <string name="sayhello">打招呼</string>
+<string name="send">发送</string>
+    <string name="speak">按住说话</string>
+</resources>

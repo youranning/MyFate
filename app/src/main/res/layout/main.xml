@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/main_find"
+        android:name="bwie.com.myfate.MyFragment.FindfragmentFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/group" />
+
+    <fragment
+        android:id="@+id/main_msg"
+        android:name="bwie.com.myfate.MyFragment.MsgFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/group" />
+
+    <fragment
+        android:id="@+id/main_my"
+        android:name="bwie.com.myfate.MyFragment.MyFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/group" />
+
+    <fragment
+        android:id="@+id/main_anim"
+        android:name="bwie.com.myfate.MyFragment.AnimFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/group" />
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rg1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/comics"
+            android:gravity="center_horizontal"
+            android:text="@string/find"
+            android:textColor="@drawable/word" />
+
+        <RadioButton
+            android:id="@+id/rg2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/find"
+            android:gravity="center"
+            android:text="@string/anim"
+            android:textColor="@drawable/word" />
+
+        <RadioButton
+            android:id="@+id/rg3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/community"
+            android:gravity="center_horizontal"
+            android:text="@string/msg"
+            android:textColor="@drawable/word" />
+
+        <RadioButton
+            android:id="@+id/rg4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/my"
+            android:gravity="center_horizontal"
+            android:text="@string/my"
+            android:textColor="@drawable/word" />
+    </RadioGroup>
+</RelativeLayout>

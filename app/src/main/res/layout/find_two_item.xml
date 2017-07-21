@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@drawable/back"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/find_second_pic"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/find_second_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="15sp" />
+</LinearLayout>

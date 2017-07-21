@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/liaotianback"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#71C3C8"
+        android:padding="10dp">
+
+        <ImageView
+
+            android:id="@+id/liaotian_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/gohome" />
+
+        <TextView
+            android:id="@+id/liaotian_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/liaotian_back"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/liaotian_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+
+            android:src="@drawable/chat_person" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/liaotian_gv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <RelativeLayout
+        android:id="@+id/liaotian_layoutview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDECE7"
+        android:padding="5dp">
+
+        <ImageView
+
+            android:id="@+id/liaotian_voidce"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/chat_yuyin" />
+
+        <ImageView
+
+            android:id="@+id/liaotian_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/chat_jiahao" />
+
+        <ImageView
+
+            android:id="@+id/liaotian_emoticon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@id/liaotian_add"
+            android:src="@drawable/chat_biaoqing" />
+
+        <Button
+
+            android:id="@+id/liaotian_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="#00FF00"
+            android:text="@string/send"
+            android:visibility="gone" />
+
+        <bwie.com.myfate.utils.EditTextPreIme
+            android:id="@+id/liaotian_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/liaotian_emoticon"
+            android:layout_toLeftOf="@id/liaotian_emoticon"
+            android:layout_toRightOf="@id/liaotian_voidce" />
+
+        <Button
+            android:id="@+id/liaotian_speak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/liaotian_emoticon"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/liaotian_emoticon"
+            android:layout_toRightOf="@id/liaotian_voidce"
+            android:text="@string/speak"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/liaotian_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <!-- 填充表情 -->
+        <FrameLayout
+            android:id="@+id/liaotian_emoticon_framelaout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+        <!-- 填充加号 -->
+
+
+        <!--- 写表情的布局-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liaotian_gridlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <!-- 填充加号 -->
+        <GridView
+            android:id="@+id/liaotian_add_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffff00" />
+
+        <!--- 写表情的布局-->
+
+    </LinearLayout>
+</LinearLayout>
