@@ -60,54 +60,43 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-scalars:+'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.google.code.gson:gson:2.8.1'
-
-
-
-    compile fileTree(dir: 'libs', include: ['*.jar']) //3D地图so及jar
-    compile 'com.amap.api:3dmap:latest.integration' //定位功能
-    compile 'com.amap.api:location:latest.integration' //搜索功能
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //3D地图so及jar
+    compile 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    compile 'com.amap.api:location:latest.integration'
+    //搜索功能
     compile 'com.amap.api:search:latest.integration'
-
-
     compile 'com.github.Aspsine:IRecyclerView:0.0.5'
     //权限
-    compile("com.github.hotchemi:permissionsdispatcher:2.4.0") {
+    compile('com.github.hotchemi:permissionsdispatcher:2.4.0') {
         // if you don't use android.app.Fragment you can exclude support for them
         exclude module: "support-v13"
     }
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:2.4.0"
-
-//图片
+    //图片
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
-
-
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
-
-//    compile 'com.liaoinstan.springview:library:1.2.6'
-
-//数据库
-    compile 'org.greenrobot:greendao:3.2.2' // add library
+    //    compile 'com.liaoinstan.springview:library:1.2.6'
+    //数据库
+    compile 'org.greenrobot:greendao:3.2.2'
+    // add library
     compile 'net.zetetic:android-database-sqlcipher:3.5.7@aar'
-//通知
+    //通知
     compile 'org.greenrobot:eventbus:3.0.0'
-
-//内存泄漏
-//    leakcanary
-
-
+    //内存泄漏
+    //    leakcanary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-
-//环信
+    //环信
     compile 'com.android.support:appcompat-v7:23.4.0'
     //Optional compile for GCM (Google Cloud Messaging).
     compile 'com.google.android.gms:play-services-gcm:9.4.0'
     compile 'com.hyphenate:hyphenate-sdk:3.3.0'
-
-//表情
+    //表情
     compile 'com.tb.emoji:yykEmoji:1.0.0'
-
+    compile project(':easeui')
 }

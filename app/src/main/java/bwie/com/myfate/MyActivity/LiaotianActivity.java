@@ -26,8 +26,15 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.domain.EaseEmojicon;
+import com.hyphenate.easeui.domain.EaseEmojiconGroupEntity;
+import com.hyphenate.easeui.model.EaseDefaultEmojiconDatas;
+import com.hyphenate.easeui.utils.EaseSmileUtils;
+import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenu;
+import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenuBase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import bwie.com.myfate.IApplication;
@@ -76,7 +83,7 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
         setContentView(R.layout.liaotian);
         list = new ArrayList<>();
         myhead = PreferencesUtils.getValueByKey(LiaotianActivity.this, "liaotian_head", "");
-//        myid = PreferencesUtils.getValueByKey(LiaotianActivity.this, "liaotian_myid", "");
+
         pickname = getIntent().getStringExtra("pickname");
         otherimagepath = getIntent().getStringExtra("otherimage");
         uid = getIntent().getStringExtra("userid");
@@ -96,6 +103,11 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
         liaotian_gv.setAdapter(adapter);
         receiveMessage();
 
+        //表情
+        initEmoje(null);
+        initListener();
+
+
         //输入框
         getLiaotianContent().setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -110,8 +122,7 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
                 } else {
                     setKeyBoardModelResize();
                 }
-//                liaotian_gridlayout.setVisibility(View.GONE);
-//                liaotian_layout.setVisibility(View.GONE);
+
 
                 return false;
             }
@@ -129,15 +140,22 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
                 if (TextUtils.isEmpty(trim)) {
                     liaotian_add.setVisibility(View.VISIBLE);
                     liaotian_send.setVisibility(View.INVISIBLE);
-
+//                    liaotian_layout.setVisibility(View.GONE);
+//                    liaotian_gridlayout.setVisibility(View.GONE);
+//                    hidenKeyBoard();
 
                 } else {
+                   /* if (liaotian_layout.getVisibility()==View.VISIBLE){
+                     hidenKeyBoard();
+                    }else {
+                        showKeyBoard();
+                    }*/
+
                     liaotian_add.setVisibility(View.INVISIBLE);
                     liaotian_send.setVisibility(View.VISIBLE);
 
                 }
-                liaotian_layout.setVisibility(View.GONE);
-                liaotian_gridlayout.setVisibility(View.GONE);
+
 
             }
 
@@ -157,6 +175,7 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
     }
 
     private void initView() {
+
         liaotian_gv = (ListView) findViewById(R.id.liaotian_gv);
         liaotian_speak = (Button) findViewById(R.id.liaotian_speak);
         liaotian_layout = (LinearLayout) findViewById(R.id.liaotian_layout);
@@ -167,7 +186,7 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
         liaotian_emoticon.setOnClickListener(this);
         liaotian_add = (ImageView) findViewById(R.id.liaotian_add);
         liaotian_add.setOnClickListener(this);
-        viewPager = (FrameLayout) findViewById(R.id.liaotian_emoticon_framelaout);
+//        viewPager = (FrameLayout) findViewById(R.id.liaotian_emoticon_framelaout);
         gridView = (GridView) findViewById(R.id.liaotian_add_gridview);
         liaotian_send = (Button) findViewById(R.id.liaotian_send);
         liaotian_send.setOnClickListener(this);
@@ -192,8 +211,6 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
             case R.id.liaotian_send:
 
                 sendTextMessage(getLiaotianContent().getText().toString().trim());
-
-
                 break;
         }
     }
@@ -273,7 +290,6 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
             //表情
             //表情按钮
             liaotian_layout.setVisibility(View.VISIBLE);
-            liaotian_gridlayout.setVisibility(View.GONE);
             liaotian_emoticon.setTag(2);
             liaotian_emoticon.setImageResource(R.drawable.chat_jianpan);
             hidenKeyBoard();
@@ -282,12 +298,15 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
             liaotian_emoticon.setImageResource(R.drawable.chat_biaoqing);
             liaotian_emoticon.setTag(1);
             showKeyBoard();
+
         }
         liaotian_voidce.setTag(1);
         liaotian_add.setTag(1);
         liaotian_voidce.setImageResource(R.drawable.chat_yuyin);
         getLiaotianContent().setVisibility(View.VISIBLE);
         liaotian_speak.setVisibility(View.GONE);
+        liaotian_gridlayout.setVisibility(View.GONE);
+
     }
 
     @Override
@@ -335,7 +354,6 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
         final EMMessage message = EMMessage.createTxtSendMessage(content, uid);
 
         System.out.println("i = " + message.getFrom() + "  " + message.getTo() + "  " + message.getBody().toString() + " " + message.getMsgId() + " " + message.getMsgTime());
-
 
 
 //发送消息的ui显示
@@ -445,8 +463,8 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        liaotian_gridlayout.setVisibility(View.GONE);
-        liaotian_layout.setVisibility(View.GONE);
+//        liaotian_gridlayout.setVisibility(View.GONE);
+//        liaotian_layout.setVisibility(View.GONE);
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             System.out.println("chatTitle = onBack KEYCODE_BACK");
             if (liaotian_layout.getVisibility() == View.VISIBLE || liaotian_gridlayout.getVisibility() == View.VISIBLE) {
@@ -481,7 +499,47 @@ public class LiaotianActivity extends Activity implements View.OnClickListener, 
         liaotian_voidce.setTag(1);
     }
 
+    EaseEmojiconMenuBase emojiconMenu;
 
+    private void initListener() {
 
+        emojiconMenu.setEmojiconMenuListener(new EaseEmojiconMenuBase.EaseEmojiconMenuListener()
 
+        {
+            @Override
+            public void onExpressionClicked(EaseEmojicon emojicon) {
+                if (emojicon.getType() != EaseEmojicon.Type.BIG_EXPRESSION) {
+                    if (emojicon.getEmojiText() != null) {
+                        getLiaotianContent().append(EaseSmileUtils.getSmiledText(LiaotianActivity.this, emojicon.getEmojiText()));
+                    }
+                }
+            }
+
+            @Override
+            public void onDeleteImageClicked() {
+                if (!TextUtils.isEmpty(getLiaotianContent().getText())) {
+                    KeyEvent event = new KeyEvent(0, 0, 0, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0, KeyEvent.KEYCODE_ENDCALL);
+                    getLiaotianContent().dispatchKeyEvent(event);
+                }
+            }
+        });
+    }
+
+    private void initEmoje(List<EaseEmojiconGroupEntity> emojiconGroupList) {
+
+        if (emojiconMenu == null) {
+            emojiconMenu = (EaseEmojiconMenu) View.inflate(LiaotianActivity.this, com.hyphenate.easeui.R.layout.ease_layout_emojicon_menu, null);
+            if (emojiconGroupList == null) {
+                emojiconGroupList = new ArrayList<EaseEmojiconGroupEntity>();
+                emojiconGroupList.add(new EaseEmojiconGroupEntity(com.hyphenate.easeui.R.drawable.ee_1, Arrays.asList(EaseDefaultEmojiconDatas.getData())));
+            }
+            ((EaseEmojiconMenu) emojiconMenu).init(emojiconGroupList);
+        }
+        liaotian_layout.addView(emojiconMenu);
+    }
+
+    public void change() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
 }

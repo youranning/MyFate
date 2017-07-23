@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/liaotian"
     android:background="@drawable/liaotianback"
     android:orientation="vertical">
 
@@ -126,11 +127,7 @@
 
 
         <!-- 填充表情 -->
-        <FrameLayout
-            android:id="@+id/liaotian_emoticon_framelaout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             />
+
         <!-- 填充加号 -->
 
 

@@ -1,6 +1,7 @@
 package bwie.com.myfate.adapter;
 
 import android.content.Context;
+import android.text.Spannable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.utils.EaseSmileUtils;
 
 import java.util.List;
 
@@ -75,14 +77,16 @@ public class LiaotianAdapter extends BaseAdapter {
             }
         }
 
+        Spannable span = EaseSmileUtils.getSmiledText(context, list.get(position).getBody().toString().substring(5, list.get(position).getBody().toString().length() - 1));
+//        // 设置内容
         if (typ == 0) {
 
 
-            viewHolder.myContent.setText(list.get(position).getBody().toString().substring(5, list.get(position).getBody().toString().length() - 1));
+            viewHolder.myContent.setText(span,TextView.BufferType.SPANNABLE);
             Glide.with(context).load(myImagepath).
                     into(viewHolder.myHead);
         } else {
-            otherViewHolder.otherContent.setText(list.get(position).getBody().toString().substring(5, list.get(position).getBody().toString().length() - 1));
+            otherViewHolder.otherContent.setText(span);
             Glide.with(context).load(otherImagepath).
                     into(otherViewHolder.otherHead);
         }
